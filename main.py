@@ -5,7 +5,6 @@ TOKEN = "8758727584:AAFkQAN6X83xWwq1Im7l79FPpPatj433uSQ"
 CHAT_ID = ""
 PAXG_URL = "https://api.binance.com/api/v3/ticker/price?symbol=PAXGUSDT"
 
-# Render FREE için sahte web server - port dinlesin diye
 def run_fake_server():
     port = int(os.environ.get("PORT", 10000))
     class Handler(BaseHTTPRequestHandler):
