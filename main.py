@@ -1,5 +1,4 @@
 import time, requests
-
 TOKEN = "8758727584:AAFkQAN6X83xWwq1Im7l79FPpPatj433uSQ"
 CHAT_ID = ""
 PAXG_URL = "https://api.binance.com/api/v3/ticker/price?symbol=PAXGUSDT"
@@ -15,7 +14,8 @@ def get_chat_id_auto():
         r = requests.get(f"https://api.telegram.org/bot{TOKEN}/getUpdates", timeout=10).json()
         if r.get("result"):
             return r["result"][-1]["message"]["chat"]["id"]
-    except: pass
+    except Exception as e:
+        print(e)
     return None
 
 def check():
@@ -23,19 +23,18 @@ def check():
         price = float(requests.get(PAXG_URL, timeout=10).json()['price'])
         print(f"GOLD {price}")
         if price >= 4161:
-            send(f"🔴 H DUSUS - Cift Tepe geldi! Fiyat: {price}")
+            send(f"🔴 H DUSUS - Cift Tepe! Fiyat: {price}")
         elif price <= 4145:
-            send(f"🔵 L CIKIS - Cift Dip geldi! Fiyat: {price}")
+            send(f"🔵 L CIKIS - Cift Dip! Fiyat: {price}")
     except Exception as e:
         print(e)
 
 cid = get_chat_id_auto()
 if cid:
     CHAT_ID = str(cid)
-    send("✅ ali_gold_816_bot 7/24 calismaya basladi - py3 arka planda acik kanka!")
-    print(f"Chat ID: {CHAT_ID}")
+    send("✅ ali_gold_816_bot 7/24 calismaya basladi!")
 else:
-    print("Telegram'da @ali_gold_816_bot'a /start yaz")
+    print("Telegram'da bota /start yaz")
 
 while True:
     check()
