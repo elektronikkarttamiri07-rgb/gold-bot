@@ -1,3 +1,4 @@
+
 import time, requests, os, threading
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
@@ -45,6 +46,7 @@ def check():
 cid = get_chat_id_auto()
 if cid:
     CHAT_ID = str(cid)
+    print(f"Chat ID bulundu: {CHAT_ID}")
     send("✅ Bot 7/24 Render'da basladi! py3 kapansa bile calisir!")
 
 while True:
